@@ -541,7 +541,6 @@ var go = function()
                 chars,
                 function(c) {
                     if (charset.indexOf(c)>=0)
-//                        if (characters[numRows*numColumns-1]==" ")
                         if (characters[lastPos]==" ")
                         {
                             moveRange(cursorPos, pos(numRows-1, numColumns-2), 1);
@@ -858,36 +857,4 @@ var go = function()
             app.gotoState("Presentation");
         else
             app.gotoState("Edit");
-
-//    var a = function(n){
-//        var array = [];
-//        var i=0;
-//        for (i=0; i<n; i++)
-//            array.push(i);
-//        return array;
-//    }(8);
-//
-//
-//    //
-//    var shuffle = function(array)
-//    {
-//          var currentIndex = array.length, temporaryValue, randomIndex ;
-//
-//          // While there remain elements to shuffle...
-//          while (0 !== currentIndex)
-//          {
-//              // Pick a remaining element...
-//              randomIndex = Math.floor(Math.random() * currentIndex);
-//              currentIndex -= 1;
-//
-//              // And swap it with the current element.
-//              temporaryValue = array[currentIndex];
-//              array[currentIndex] = array[randomIndex];
-//              array[randomIndex] = temporaryValue;
-//          }
-//
-//          return array;
-//    }
-
-
 };
