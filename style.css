@@ -1,0 +1,280 @@
+body
+{
+    background-color: #000000;
+    color: #aaaaaa;
+}
+
+.topLevelDiv
+{
+    /*
+    margin: 1em;
+    padding: 1em;
+    */
+    text-align: center;
+}
+
+.paddingBottom
+{
+    padding-bottom: 1em;
+}
+
+.paddingTop
+{
+    padding-top: 1em;
+}
+
+#idMessageDisplay
+{
+}
+
+#idMessageOverlay
+{
+    margin-top: -165px;
+}
+
+#idMessageTextArea
+{
+    resize: none;
+    font-family: monospace;
+    margin-top: -165px;
+
+    /* SIZE */
+    /* (9+1)*35 + 1 */
+/*
+    width: 351px;
+*/
+    /* SIZE */
+    /* (20+1)*4 + 1 */
+/*
+    height: 85px;
+*/
+
+    /* SIZE */
+    /* (18+1)*35 + 1 */
+    width: 666px;
+
+    /* SIZE */
+    /* (40+1)*4 + 1 */
+    height: 165px;
+
+    border: none;
+    opacity: 0;
+}
+
+.messageTable
+{
+    display: table;
+    margin: 0 auto;
+
+    /* SIZE */
+    /* (20+1)*4 + 1 */
+    /*
+    margin-top: -85px;
+    */
+
+    /* SIZE */
+    /* (40+1)*4 + 1 */
+}
+
+.messageRow
+{
+    display: table-row;
+}
+
+.messageCell
+{
+    display: table-cell;
+
+    /* SIZE */
+    /*
+    height: 20px;
+    width: 9px;
+    */
+
+    /* SIZE */
+    height: 40px;
+    width: 18px;
+}
+
+.glyphCell
+{
+    border-bottom: solid 1px #252525;
+    border-right: solid 1px #252525;
+    background: url('glyphs2.png') -1px 0;
+}
+
+.overlayTable
+{
+    /* SIZE */
+    /* (40+1)*4 + 1 */
+    margin-top: -165px;
+
+
+    /* SIZE */
+    /* (20+1)*4 + 1 */
+    /*
+    margin-top: -85px;
+    */
+}
+
+.overlayCell
+{
+    position: relative;
+    border-bottom: solid 1px #252525;
+    border-right: solid 1px #252525;
+
+    background-color: rgba(0,0,0,0);
+}
+
+.underscoreCursor
+{
+    position: absolute;
+    bottom: 0;
+    /* SIZE */
+    /*
+    height: 3px;
+    width: 9px;
+    */
+    /* SIZE */
+    height: 6px;
+    width: 18px;
+    background-color: rgba(0,0,0,0);
+}
+
+.showCursor
+{
+    background-color: rgba(255,0,255,0.4);
+}
+
+
+.topCell
+{
+    border-top: solid 1px #252525;
+}
+
+.leftCell
+{
+    border-left: solid 1px #252525;
+}
+
+#idReadyButtonDiv
+{
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.customButton
+{
+    margin: 1em;
+    display: table;
+    margin: 0 auto;
+}
+
+.customButton>a,.customButton>span
+{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+    text-decoration: none;
+    border: 1px solid;
+    display: table-cell;
+}
+
+.customButton.enabled>a
+{
+    /*
+    background-color: #0000aa;
+    */
+    color:#ffffff;
+    border-color: #aaaaaa;
+}
+
+.customButton.enabled>a:hover
+{
+    background-color: #aaaaaa;
+    border-color: #aaaaaa;
+    color:#000000;
+}
+
+.customButton.enabled>a:focus
+{
+    outline-color: transparent;
+}
+
+.customButton.disabled>span
+{
+    /*
+    background-color: #aaaaaa;
+    */
+    border-color: #333333;
+    color: #333333;
+}
+
+.closeButton
+{
+    float: right;
+    display: inline-block;
+    padding: 2px 5px;
+    font-size:150%;
+    text-decoration: none;
+}
+
+.closeButton>a
+{
+    text-decoration: none;
+    color: #aaaaaa;
+}
+
+.closeButton>a:hover
+{
+    color: #ffffff;
+}
+
+.closeButton.disabled>span
+{
+    color: #aaaaaa;
+}
+
+.readyDiv
+{
+    /* SIZE */
+    /* (18+1)*35 + 1 */
+    width: 666px;
+
+    /* SIZE */
+    /* (40+1)*4 + 1 */
+    /*
+    height: 165px;
+    */
+
+    margin: 0 auto;
+
+    text-align: center;
+    border: solid 1px #333333;
+}
+
+.testDiv
+{
+    margin: 1em;
+}
+
+.centeredText
+{
+    margin: 2em;
+}
+
+#idPresentation
+{
+    padding-top: 2em;
+}
+
+#idEditButtonDiv
+{
+    color: #ff0000;
+}
+
+.iconButton
+{
+    outline-color: transparent;
+}
