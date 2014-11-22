@@ -117,10 +117,18 @@ var go = function()
                     [
                         "div",
                         {
-                            id: "idMessageDisplay",
-                            className: "messageTable"
+                            id: "idMessageSizer"
                         },
-                        buildTable("c", " messageCell glyphCell")
+                        [
+                            [
+                                "div",
+                                {
+                                    id: "idMessageDisplay",
+                                    className: "messageTable"
+                                },
+                                buildTable("c", " messageCell glyphCell")
+                            ]
+                        ]
                     ]
                 ]
                 );
@@ -129,26 +137,46 @@ var go = function()
         //
         var editableMessageDOM = function()
         {
-            var messageElement = messageDOM();
+            var messageSizer = messageDOM().firstChild;
 
-            messageElement.appendChild(
+            // messageSizer.appendChild(
+                // wi.createElement(
+                    // "textarea",
+                    // {
+                        // id: "idMessageTextArea",
+                        // onkeydown: onKeyDown,
+                        // onkeyup: onKeyUp ,
+                        // onblur: onBlur,
+                    // }
+                    // )
+                // );
+
+            messageSizer.appendChild(
                 wi.createElement(
-                    "textarea",
+                    "div",
                     {
-                        id: "idMessageTextArea",
-                        onkeydown: onKeyDown,
-                        onkeyup: onKeyUp ,
-                        onblur: onBlur,
-                    }
+                        id : "idCaretHider"
+                    },
+                    [
+                        [
+                            "textarea",
+                            {
+                                id: "idMessageTextArea",
+                                onkeydown: onKeyDown,
+                                onkeyup: onKeyUp ,
+                                onblur: onBlur,
+                            }
+                        ]
+                    ]
                     )
                 );
 
-            messageElement.appendChild(
+            messageSizer.appendChild(
                 wi.createElement(
                     "div",
                     {
                         id: "idMessageOverlay",
-                        className: "messageTable overlayTable"
+                        className: "messageTable"
                     },
                     function()
                     {
@@ -176,7 +204,7 @@ var go = function()
                     }()
                     )
                 );
-            return messageElement;
+            return messageSizer;
         };
 
         //
@@ -242,7 +270,6 @@ var go = function()
                             {
                                 className : "iconButton",
                                 href: location.href.split("?")[0],
-//                                onclick: function(){ gotoState("Edit");  }
                             },
                             [
                                 "img",

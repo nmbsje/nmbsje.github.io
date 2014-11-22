@@ -6,10 +6,6 @@ body
 
 .topLevelDiv
 {
-    /*
-    margin: 1em;
-    padding: 1em;
-    */
     text-align: center;
 }
 
@@ -23,40 +19,58 @@ body
     padding-top: 1em;
 }
 
+#idMessageSizer
+{
+    position: relative;
+    width: 666px;
+    height: 165px;
+    margin: 0 auto;
+}
+
 #idMessageDisplay
 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
 }
 
 #idMessageOverlay
 {
-    margin-top: -165px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+#idCaretHider
+{
+    overflow: hidden;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 0px;
+    left: 0px;
 }
 
 #idMessageTextArea
 {
     resize: none;
     font-family: monospace;
-    margin-top: -165px;
-
-    /* SIZE */
-    /* (9+1)*35 + 1 */
+    
 /*
-    width: 351px;
-*/
-    /* SIZE */
-    /* (20+1)*4 + 1 */
-/*
-    height: 85px;
-*/
-
-    /* SIZE */
-    /* (18+1)*35 + 1 */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+*/    
     width: 666px;
-
-    /* SIZE */
-    /* (40+1)*4 + 1 */
     height: 165px;
-
+    
+    padding: 0px;
     border: none;
     opacity: 0;
 }
@@ -64,16 +78,6 @@ body
 .messageTable
 {
     display: table;
-    margin: 0 auto;
-
-    /* SIZE */
-    /* (20+1)*4 + 1 */
-    /*
-    margin-top: -85px;
-    */
-
-    /* SIZE */
-    /* (40+1)*4 + 1 */
 }
 
 .messageRow
@@ -85,13 +89,6 @@ body
 {
     display: table-cell;
 
-    /* SIZE */
-    /*
-    height: 20px;
-    width: 9px;
-    */
-
-    /* SIZE */
     height: 40px;
     width: 18px;
 }
@@ -101,20 +98,6 @@ body
     border-bottom: solid 1px #252525;
     border-right: solid 1px #252525;
     background: url('glyphs2.png') -1px 0;
-}
-
-.overlayTable
-{
-    /* SIZE */
-    /* (40+1)*4 + 1 */
-    margin-top: -165px;
-
-
-    /* SIZE */
-    /* (20+1)*4 + 1 */
-    /*
-    margin-top: -85px;
-    */
 }
 
 .overlayCell
@@ -130,12 +113,6 @@ body
 {
     position: absolute;
     bottom: 0;
-    /* SIZE */
-    /*
-    height: 3px;
-    width: 9px;
-    */
-    /* SIZE */
     height: 6px;
     width: 18px;
     background-color: rgba(0,0,0,0);
@@ -183,9 +160,6 @@ body
 
 .customButton.enabled>a
 {
-    /*
-    background-color: #0000aa;
-    */
     color:#ffffff;
     border-color: #aaaaaa;
 }
@@ -204,9 +178,6 @@ body
 
 .customButton.disabled>span
 {
-    /*
-    background-color: #aaaaaa;
-    */
     border-color: #333333;
     color: #333333;
 }
@@ -238,18 +209,8 @@ body
 
 .readyDiv
 {
-    /* SIZE */
-    /* (18+1)*35 + 1 */
     width: 666px;
-
-    /* SIZE */
-    /* (40+1)*4 + 1 */
-    /*
-    height: 165px;
-    */
-
     margin: 0 auto;
-
     text-align: center;
     border: solid 1px #333333;
 }
@@ -277,4 +238,9 @@ body
 .iconButton
 {
     outline-color: transparent;
+}
+
+.iconButton>img
+{
+    border : none;
 }
