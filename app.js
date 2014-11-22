@@ -139,18 +139,6 @@ var go = function()
         {
             var messageSizer = messageDOM().firstChild;
 
-            // messageSizer.appendChild(
-                // wi.createElement(
-                    // "textarea",
-                    // {
-                        // id: "idMessageTextArea",
-                        // onkeydown: onKeyDown,
-                        // onkeyup: onKeyUp ,
-                        // onblur: onBlur,
-                    // }
-                    // )
-                // );
-
             messageSizer.appendChild(
                 wi.createElement(
                     "div",
