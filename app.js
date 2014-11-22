@@ -21,9 +21,10 @@ var go = function()
         var cursorRow = 0;
         var cursorColumn = 0;
         var cursorBlinkPeriod = 530;
-        var onKeyUp = function(event) { if (currentState == "Edit") onKeyUpTextArea(event); };
-        var onKeyDown = function(event) { if (currentState == "Edit") onKeyDownTextArea(event); };
-        var onBlur = function() { if (currentState == "Edit") { var self = this; setTimeout(function() { self.focus(); }, 50); } };
+        var enableTextEvents = false;
+        var onKeyUp = function(event) { if (enableTextEvents) onKeyUpTextArea(event); };
+        var onKeyDown = function(event) { if (enableTextEvents) onKeyDownTextArea(event); };
+        var onBlur = function() { if (enableTextEvents) { var self = this; setTimeout(function() { self.focus(); }, 50); } };
         var introInterval = 0;
 
         //
@@ -228,7 +229,7 @@ var go = function()
                         },
                         [
                             wi.styledButton(
-                                "idReadyButton", "Klaar", function(){ gotoState("Ready"); }, true, "customButton"
+                                "idReadyButton", "Klaar", function(){ enableTextEvents = false; gotoState("Ready"); }, true, "customButton"
                                 )
                         ]
                     ]
@@ -824,6 +825,7 @@ var go = function()
         //
         transition["null"]["Edit"] = function()
         {
+            enableTextEvents = true;
             wi.body().appendChild(editDOM());
             putCursor(0,0);
             wi.elem("idMessageTextArea").focus();
@@ -847,6 +849,7 @@ var go = function()
             wi.enableElementTree(wi.elem("idReadyButton"), true);
             showCursor();
             cursorInterval = setInterval(toggleCursor, cursorBlinkPeriod);
+            enableTextEvents = true;
             wi.elem("idMessageTextArea").focus();
             return true;
         };
