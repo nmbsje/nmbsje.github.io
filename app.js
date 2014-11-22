@@ -21,11 +21,12 @@ var go = function()
         var cursorRow = 0;
         var cursorColumn = 0;
         var cursorBlinkPeriod = 530;
-        var enableTextEvents = false;
-        var onKeyUp = function(event) { if (enableTextEvents) onKeyUpTextArea(event); };
-        var onKeyDown = function(event) { if (enableTextEvents) onKeyDownTextArea(event); };
-        var onBlur = function() { if (enableTextEvents) { var self = this; setTimeout(function() { self.focus(); }, 50); } };
         var introInterval = 0;
+
+        var enableTextEvents = false;
+//        var onKeyUp = function(event) { if (enableTextEvents) onKeyUpTextArea(event); };
+//        var onKeyDown = function(event) { if (enableTextEvents) onKeyDownTextArea(event); };
+        var onBlur = function() { wi.log("onblur"); /*if (enableTextEvents) { var self = this; setTimeout(function() { wi.log("focus()"); self.focus(); }, 50); }*/ };
 
         //
         var pos = function(row, column)
@@ -151,8 +152,8 @@ var go = function()
                             "textarea",
                             {
                                 id: "idMessageTextArea",
-                                onkeydown: onKeyDown,
-                                onkeyup: onKeyUp ,
+//                                onkeydown: onKeyDown,
+//                                onkeyup: onKeyUp ,
                                 onblur: onBlur,
                             }
                         ]
@@ -526,14 +527,41 @@ var go = function()
         };
 
         //
+        var onKeyUp = function(event)
+        {
+            if (!enableTextEvents)
+                return;
+
+            onKeyUpTextArea(event);
+        };
+
+        //
+        var onKeyDown = function(event)
+        {
+            var el = wi.elem("idMessageTextArea");
+
+            if (!enableTextEvents)
+                return;
+
+//            wi.log("onKeyDown()");
+
+            if (document.activeElement != el)
+                el.focus();
+
+            onKeyDownTextArea(event);
+        };
+
+        //
         var onKeyDownTextArea = function(event)
         {
             var charCode = wi.getKeyCode(event);
-            if (charCode == 9)
-            {
-                event.stopPropagation();
-                event.preventDefault();
-            }
+//            if (charCode == 9)
+//            {
+//                event.stopPropagation();
+//                event.preventDefault();
+//            }
+//
+            wi.log("onKeyDownTextArea");
 
             if ( (!keyDown) && (charCode == 45) )
                 toggleInsertMode();
@@ -546,6 +574,7 @@ var go = function()
         //
         var onKeyUpTextArea = function(event)
         {
+            wi.log("onKeyUpTextArea");
             keyDown = false;
             processKeyEvent(wi.getKeyCode(event));
         };
@@ -592,6 +621,8 @@ var go = function()
         var processKeyEvent = function(charCode )
         {
             var textArea= wi.elem("idMessageTextArea");
+
+//            wi.log("processKeyEvent()");
 
             switch (charCode)
             {
@@ -652,7 +683,6 @@ var go = function()
                         {
                             var destColumn = trailingEmpty(cursorRow-1);
                             destColumn = (destColumn>=numColumns) ? numColumns-1 : destColumn;
-                            wi.log("destColumn == "+ destColumn);
                             moveRange(cursorPos, pos(cursorRow, numColumns-1), destColumn-numColumns);
                             if (isRowEmpty(cursorRow))
                                 moveRange(pos(cursorRow+1,0), lastPos, -numColumns);
@@ -826,6 +856,8 @@ var go = function()
         transition["null"]["Edit"] = function()
         {
             enableTextEvents = true;
+            wi.body().onkeyup = onKeyUp;
+            wi.body().onkeydown = onKeyDown;
             wi.body().appendChild(editDOM());
             putCursor(0,0);
             wi.elem("idMessageTextArea").focus();
