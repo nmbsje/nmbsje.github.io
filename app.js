@@ -536,17 +536,36 @@ var go = function()
         };
 
         //
-        var onKeyDown = function(event)
+        var focusTextArea = function()
         {
             var el = wi.elem("idMessageTextArea");
+
+            if (document.activeElement != el)
+            {
+                el.focus();
+                wi.log("focus()");
+            }
+        };
+
+        //
+        var onClickCell = function(event)
+        {
+            if (currentState == "Edit")
+            {
+                focusTextArea();
+                putCursor(rowIndex,columnIndex);
+            }
+        };
+
+        //
+        var onKeyDown = function(event)
+        {
 
             if (!enableTextEvents)
                 return;
 
 //            wi.log("onKeyDown()");
-
-            if (document.activeElement != el)
-                el.focus();
+            focusTextArea();
 
             onKeyDownTextArea(event);
         };
@@ -561,7 +580,7 @@ var go = function()
 //                event.preventDefault();
 //            }
 //
-            wi.log("onKeyDownTextArea");
+//            wi.log("onKeyDownTextArea");
 
             if ( (!keyDown) && (charCode == 45) )
                 toggleInsertMode();
@@ -574,7 +593,7 @@ var go = function()
         //
         var onKeyUpTextArea = function(event)
         {
-            wi.log("onKeyUpTextArea");
+//            wi.log("onKeyUpTextArea");
             keyDown = false;
             processKeyEvent(wi.getKeyCode(event));
         };
@@ -860,7 +879,7 @@ var go = function()
             wi.body().onkeydown = onKeyDown;
             wi.body().appendChild(editDOM());
             putCursor(0,0);
-            wi.elem("idMessageTextArea").focus();
+            focusTextArea();
             return true;
         };
 
@@ -882,7 +901,7 @@ var go = function()
             showCursor();
             cursorInterval = setInterval(toggleCursor, cursorBlinkPeriod);
             enableTextEvents = true;
-            wi.elem("idMessageTextArea").focus();
+            focusTextArea();
             return true;
         };
 
