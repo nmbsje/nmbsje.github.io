@@ -110,13 +110,13 @@ var go = function()
         var messageDOM = function()
         {
             return wi.createElement(
-                "div",
-                {
-                    id: "idMessageDialog",
-                    className: "topLevelDiv"
-                },
-                [
-                    [
+//                "div",
+//                {
+//                    id: "idMessageDialog",
+//                    className: "topLevelDiv"
+//                },
+//                [
+//                    [
                         "div",
                         {
                             id: "idMessageSizer"
@@ -131,35 +131,42 @@ var go = function()
                                 buildTable("c", " messageCell glyphCell")
                             ]
                         ]
-                    ]
-                ]
+//                    ]
+//                ]
+                );
+        };
+
+        //
+        var messageTextArea = function()
+        {
+            return wi.createElement(
+                "textarea",
+                {
+                    id: "idMessageTextArea",
+                    onblur: onBlur,
+                }
                 );
         };
 
         //
         var editableMessageDOM = function()
         {
-            var messageSizer = messageDOM().firstChild;
+            var messageSizer = messageDOM();
 
-            messageSizer.appendChild(
-                wi.createElement(
-                    "div",
-                    {
-                        id : "idCaretHider"
-                    },
-                    [
+            if (wi.IE())
+                messageSizer.appendChild(
+                    wi.createElement(
+                        "div",
+                        {
+                            id : "idCaretHider"
+                        },
                         [
-                            "textarea",
-                            {
-                                id: "idMessageTextArea",
-//                                onkeydown: onKeyDown,
-//                                onkeyup: onKeyUp ,
-                                onblur: onBlur,
-                            }
+                            messageTextArea()
                         ]
-                    ]
-                    )
-                );
+                        )
+                    );
+            else
+                messageSizer.appendChild(messageTextArea());
 
             messageSizer.appendChild(
                 wi.createElement(

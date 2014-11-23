@@ -1,5 +1,10 @@
 var wi = wi || {};
 
+wi.IE = function()
+{
+    return ((navigator.appName == 'Microsoft Internet Explorer') || ((navigator.appName == 'Netscape') && (new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) != null))); 
+};
+
 wi.isArray = ('isArray' in Array) ? Array.isArray : function (value) {
     return Object.prototype.toString.call(value) === '[object Array]';
 };
